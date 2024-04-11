@@ -1,5 +1,5 @@
 .Header {
-    position: sticky;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -9,16 +9,29 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    transition-property: all;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 500ms;
     background-color: aliceblue;
     z-index: 20;
 }
-.down {
-    top: -4rem;
-}
+
 .headerContent {
     /* border: 1px solid black; */
     font-size: 2rem;
 }
+
+@media screen and (min-width: 900px) {
+  .Header {
+    min-width: 100vw;
+  }
+}
+
+  @media screen and (max-width: 600px) and (max-width: 768px) {
+    .Header {
+    min-width: 100vw;
+  }
+  }
+
+  @media screen and (max-width: 450px) {
+    .Header {
+    min-width: 100vw;
+  }
+  }

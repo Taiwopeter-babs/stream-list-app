@@ -1,24 +1,24 @@
 import { ISectionProp } from "@/lib/types";
-import Movies from "./Movie/Movie";
-import MovieBox, { IMovieProp } from "./MovieBox/MovieBox";
+import MovieSection from "./MovieSection/MovieSection";
+import Movie, { IMovieProp } from "./Movie/Movie";
 import { getMoviesData } from "@/lib/getData";
 
 
-export default async function Popular(MovieProp: ISectionProp) {
+export default async function Popular(movieProp: ISectionProp) {
     let movies;
-    const {backDropSize, sectionName} = MovieProp;
+    const {backDropSize, sectionName} = movieProp;
 
     try {
         movies = await getMoviesData('popular');
     } catch (error: any) {
         return (
-            <Movies sectionName={sectionName}>
+            <MovieSection sectionName={sectionName}>
                 <div>Error in Connection</div>
-            </Movies>
+            </MovieSection>
         );
     }
     
-    const MovieBoxArray = movies.results.map((movie: any) => {
+    const moviesArray = movies.results.map((movie: any) => {
         const prop: IMovieProp = {
             backDropSize: backDropSize,
             imagePath: movie.backdrop_path,
@@ -28,11 +28,11 @@ export default async function Popular(MovieProp: ISectionProp) {
             release_date: movie.release_date,
             overview: movie.overview
         }
-        return <MovieBox key={movie.id} {...prop}/>
+        return <Movie key={movie.id} {...prop}/>
     })
     return (
-        <Movies sectionName={sectionName}>
-            {...MovieBoxArray}
-        </Movies>
+        <MovieSection sectionName={sectionName}>
+            {...moviesArray}
+        </MovieSection>
     );
 }

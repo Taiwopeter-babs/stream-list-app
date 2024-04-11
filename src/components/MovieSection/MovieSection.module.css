@@ -1,0 +1,50 @@
+.movieSection {
+    /* border: 1px solid black; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    min-height: 6rem;
+    width: 100%;
+    margin-top: 20px;
+}
+.sectionName {
+    text-align: center;
+    font-size: 2rem;
+    text-transform: capitalize;
+    margin: 10px 0;
+}
+.movieContainer {
+    height: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    flex-basis: 20%;
+    justify-content: space-evenly;
+   /* border: 1px solid black; */
+
+}
+
+@media screen and (min-width: 900px) {
+  .movieContainer {
+    /* flex-flow: row; */
+    flex-basis: 30%;
+    justify-content: space-evenly;
+  }
+}
+
+  @media screen and (max-width: 600px) and (max-width: 768px) {
+    .movieContainer {
+      /* flex-flow: row; */
+      flex-basis: 30%;
+      justify-content: space-evenly;
+    }
+  }
+
+  @media screen and (max-width: 400px) {
+    .movieContainer {
+      /* flex-flow: row; */
+      flex-basis: 50%;
+      justify-content: space-evenly;
+    }
+  }

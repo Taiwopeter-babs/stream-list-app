@@ -1,24 +1,24 @@
 import { ISectionProp } from "@/lib/types";
-import Movies from "./Movie/Movie";
-import MovieBox, { IMovieProp } from "./MovieBox/MovieBox";
+import MovieSection from "./MovieSection/MovieSection";
+import MovieBox, { IMovieProp } from "./Movie/Movie";
 import { getMoviesData } from "@/lib/getData";
 
 
-export default async function Upcoming(MovieProp: ISectionProp) {
+export default async function New(SectionProp: ISectionProp) {
     let movies;
-    const {backDropSize, sectionName} = MovieProp;
+    const {backDropSize, sectionName} = SectionProp;
 
     try {
         movies = await getMoviesData('upcoming');
     } catch (error: any) {
         return (
-            <Movies sectionName={sectionName}>
+            <MovieSection sectionName={sectionName}>
                 <div>Error in Connection</div>
-            </Movies>
+            </MovieSection>
         );
     }
     
-    const MovieBoxArray = movies.results.map((movie: any) => {
+    const MoviesArray = movies.results.map((movie: any) => {
         const prop: IMovieProp = {
             backDropSize: backDropSize,
             imagePath: movie.backdrop_path,
@@ -29,10 +29,12 @@ export default async function Upcoming(MovieProp: ISectionProp) {
             overview: movie.overview
         }
         return <MovieBox key={movie.id} {...prop}/>
-    })
+    });
+
+
     return (
-        <Movies sectionName={sectionName}>
-            {...MovieBoxArray}
-        </Movies>
+        <MovieSection sectionName={sectionName}>
+            {...MoviesArray}
+        </MovieSection>
     );
 }
